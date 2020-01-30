@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Image Gallery" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+    <nav class="top-bar foundation-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+         <h1><%= link_to "Image Gallery", root_path %></h1>
+        </li>
+      </ul>
+      <section class="top-bar-section">
+        <ul>
+          <li<%= ' class=active' if controller.controller_name == 'galleries' %>><%= link_to "Galleries", galleries_path %></li>
+        </ul>
+      </section>
+    </nav>
+
+    <section class="main-section">
+      <div class="row">
+        <div class="large-12 columns">
+          <% flash.each do |name, msg| %>
+            <% if msg.is_a?(String) %>
+              <div data-alert class="alert-box <%= name.to_s == 'notice' ? 'success' : 'alert' %>">
+                <%= content_tag :div, msg %>
+                <a href="#" class="close">&times;</a>
+              </div>
+            <% end %>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+    </section>
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "image-gallery",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "exit 0"
+  },
+  "dependencies": {
+    "foundation-sites": "^5.5.2"
+  },
+  "engines": {
+    "node": ">= 4",
+    "npm": ">= 3.x"
+  }
+}
